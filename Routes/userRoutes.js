@@ -1,5 +1,5 @@
 import express from 'express'
-import { createUserController, displayAllController } from '../Controller/userController.js';
+import { createUserController, deleteUserController, displayAllController, updateUserController } from '../Controller/userController.js';
 
 
 
@@ -10,6 +10,12 @@ userRoutes.post("/create", createUserController);
 
 //display profile
 userRoutes.get("", displayAllController);
+
+//update user account
+userRoutes.put("/:id", updateUserController);
+
+//delete user account
+userRoutes.delete("/:id", deleteUserController)
 
 
 
