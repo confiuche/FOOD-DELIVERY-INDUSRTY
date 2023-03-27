@@ -1,4 +1,4 @@
-
+import User from "../Model/userModel.js";
 
 //create users
 export const createUserController = async(req,res)=>{
