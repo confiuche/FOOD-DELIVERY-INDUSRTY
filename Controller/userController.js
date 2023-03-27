@@ -2,10 +2,17 @@ import User from "../Model/userModel.js";
 
 //create users
 export const createUserController = async(req,res)=>{
+    const {surname, firstname, othername, profilephoto, email, password} = req.body
     try {
         res.json({
             status:"success",
-            message:"User account successfully created",
+            message:{
+                surname,
+                firstname,
+                othername,
+                email,
+                password,
+            }
         })
     } catch (error) {
         res.json(error.message);

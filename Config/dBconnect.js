@@ -4,7 +4,7 @@ export const database = async () =>{
     try {
         mongoose.set("strictQuery",false);
 
-        await mongoose.connect(process,env.DB_CONNECT);
+        await mongoose.connect(process.env.DB_CONNECT);
         console.log("Database connected successfully");
     } catch (error) {
         console.log(error.message);
