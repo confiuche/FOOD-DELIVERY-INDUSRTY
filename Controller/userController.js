@@ -4,16 +4,29 @@ import User from "../Model/userModel.js"
 export const createUserController = async(req,res)=>{
     const {surname, firstname, othername, profilephoto, email, password} = req.body
     try {
-        res.json({
+        //CHECK IF USER EXIT
+        const foundUser = await User.findOne({email});
+        if(foundUser){
+            res.json({
+                status:"error",
+                message:"User already exit"
+            })
+        }else{
+            const user = await User.create({
+                    status:"success",
+                    message:{
+                        surname,
+                        firstname,
+                        othername,
+                        email,
+                        password,
+                    }
+            })
+          res.json({
             status:"success",
-            message:{
-                surname,
-                firstname,
-                othername,
-                email,
-                password,
-            }
-        })
+            data:user
+          })
+        }
     } catch (error) {
         res.json(error.message);
     }
