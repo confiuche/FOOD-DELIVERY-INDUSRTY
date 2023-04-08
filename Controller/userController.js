@@ -13,14 +13,11 @@ export const createUserController = async(req,res)=>{
             })
         }else{
             const user = await User.create({
-                    status:"success",
-                    message:{
                         surname,
                         firstname,
                         othername,
                         email,
                         password,
-                    }
             })
           res.json({
             status:"success",
